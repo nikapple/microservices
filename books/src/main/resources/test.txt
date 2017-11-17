@@ -1,0 +1,31 @@
+{ "result" : 
+[ 
+{ 
+"_id" : "Physics" , 
+"books" : [ { "_id" : { "$oid" : "5a05c6a78b85c453754043db"} , 
+			"_class" : "org.readingmonitor.books.domain.Book" , 
+			"name" : "Astro Physics" , 
+			"author" : "Shah" , 
+			"topic" : "Physics"}]} , 
+			
+ "_id" : "Chemistry" , 
+ "books" : [ { "_id" : { "$oid" : "5a05c6a78b85c453754043da"} , 
+ 			"_class" : "org.readingmonitor.books.domain.Book" , 
+ 			"name" : "Fing Chem" , 
+ 			"author" : "Dev" , 
+ 			"topic" : "Chemistry"}]} , 
+ 
+ { "_id" : "English" , 
+ "books" : [ { "_id" : { 
+ 				"$oid" : "5a05c6a78b85c453754043d8"} , 
+ 				"_class" : "org.readingmonitor.books.domain.Book" , 
+ 				"name" : "Proper English" , "author" : "Bala" , 
+ 				"topic" : "English"} , 
+ 			 { "_id" : { 
+ 			 	"$oid" : "5a05c6a78b85c453754043d9"} , 
+ 			 	"_class" : "org.readingmonitor.books.domain.Book" , 
+ 			 	"name" : "BS English" , "author" : "Lala" , 
+ 			 	"topic" : "English"}]} , 
+ 			 	
+ 			 	
+ { "_id" : "Math" , "books" : [ { "_id" : { "$oid" : "5a05c6a78b85c453754043d7"} , "_class" : "org.readingmonitor.books.domain.Book" , "name" : "Vedic Maths" , "author" : "Shakuntala" , "topic" : "Math"}]}] , "ok" : 1.0}

@@ -1,0 +1,80 @@
+db.activities.aggregate([
+{$match:{_id:"userId1"}},
+{$unwind:'$books'},
+{$project:{
+		readingHistory:{$filter:{
+			input:'$readingHistory',
+			as:'date',
+			cond:{$gt:['$$date',	ISODate("2017-11-14T00:00:00Z")]}
+		}}
+	}}
+])
+
+db.activities.aggregate([
+{$match:{_id:"userId1"}},
+{$unwind:'$books'},
+{$project:{
+		books.readingHistory:{$filter:{
+			input:'$readingHistory',
+			as:'date',
+			cond:{$gt:['$$date',	ISODate("2017-11-14T00:00:00Z")]}
+		}}
+	}}
+])
+
+db.activities.aggregate([
+{$match:{_id:"userId1"}},
+{$unwind:'$books'},
+{$unwind:'$books.readingHistory'},
+{$match:{'books.readingHistory':{$gte:ISODate("2017-11-14T00:00:00Z")}}}
+])
+{$project:{
+		books.readingHistory:{$filter:{
+			input:'$readingHistory',
+			as:'date',
+			cond:{$gt:['$$date',	ISODate("2017-11-14T00:00:00Z")]}
+		}}
+	}}
+])
+
+db.collection.aggregate([
+	{$match: {_id: id, 'data.date': {$gte: from, $lte: to}}},
+        //Filter the items array
+	{
+		$addFields: {
+			'items': {
+				$filter: {
+					input: '$data', as: 'item', cond: {
+						$and: [
+							{$gte: ["$$item.date", from]},
+							{$lte: ["$$item.date", to]}
+						]
+					}
+				}
+			}
+		}
+	}
+]);
+
+{
+	"_id" : "userId1",
+	"_class" : "org.readingmonitor.activities.domain.Activities",
+	"books" : {
+		"_id" : "bookId1",
+		"readingHistory" : [
+			ISODate("2017-11-11T00:00:00Z"),
+			ISODate("2017-11-12T00:00:00Z"),
+			ISODate("2017-11-14T00:00:00Z")
+		]
+	}
+}
+
+
+{$match:{_id:"userId1"}},{$unwind:'$books',{$project:{readingHistory:{$filter:{input:'$readingHistory',as:'date',cond:{$gt:[]}}}}}}]).pretty();
+{ $project: {
+        list: {$filter: {
+            input: '$list',
+            as: 'item',
+            cond: {$gt: ['$$item.a', 3]}
+        }}
+    }}
